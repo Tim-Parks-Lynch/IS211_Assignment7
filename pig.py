@@ -6,26 +6,25 @@ def main(player1, player2):
     new_game = GameBoard(player1, player2)
 
     playing = True
-    count = 0
 
-    while playing:
-        rolling = new_game.roll()
+    while playing is True:
+        roll_amount = new_game.roll()
+        new_game.hold()
+        new_game.switch_players()
 
-        print("current roller", new_game.current_roller)
-        print("role", rolling)
-        holding = new_game.hold()
-        print(
-            "after role and hold",
-            new_game.current_roller,
-            rolling,
-            holding,
-            count,
-        )
+        player1_score, player2_score = new_game.player_scores.values()
+        print(player1_score, player2_score, roll_amount)
+        if player1_score >= 50 or player2_score >= 50:
+            if player1_score > player2_score:
+                print("player1 wins", new_game)
+                playing = False
+            else:
+                print("player2 wins", new_game)
+                playing = False
+        # if count >= 50:
+        #     playing = False
 
-        if count >= 50:
-            playing = False
-
-        count += 1
+        # count += 1
 
 
 if __name__ == "__main__":

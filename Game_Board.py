@@ -26,20 +26,15 @@ class GameBoard:
 
     def hold(self):
         self.player_scores[self.current_roller] += self.current_score
-        # self.switch_players()
-        # return self.current_score
-        return self.get_score()
+        self.current_score = 0
 
     def roll(self):
         result = self.dice.roll_dice()
         if result > 1:
             self.update_current_score(result)
-
-            return self.get_score()
         else:
             self.current_score = 0
-            self.switch_players()
-            return self.get_score()
+        return result
 
     def update_current_score(self, roll_num):
         self.current_score += roll_num
