@@ -1,6 +1,8 @@
 # IS211_Assignment7
 
-IS211_Assignment7
+Hi Professor,
+
+Make your terminal window bigger when you run my code to help with the output. I tried to make it as clean as possible, but it takes a decent amount of space. Also feel free to ignore the below. I'm trying to get it ready for Assignment 8.
 
 ## Dice Class
 

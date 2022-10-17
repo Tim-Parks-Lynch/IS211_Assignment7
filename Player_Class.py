@@ -24,25 +24,35 @@ class HumanPlayer(Player):
 
     def turn(self):
         turn_total = 0
-        roll_or_hold = "r"
+        roll_or_hold = ""
 
         while roll_or_hold != "h":
             roll = self.dice.roll_dice()
 
             if roll > 1:
                 turn_total += roll
+                print(f"\n{self.name}'s Turn")
+                print("----------------------------------")
                 print(
-                    f"Role = {roll},\nPlayer total = {self.total}, \nPossible total if held = {self.total + turn_total} ",
+                    f"Role = {roll}",
+                    f"\nTurn Total = {turn_total}"
+                    f"\nPossible total if held = {self.total + turn_total}",
+                    f"\nPlayer total = {self.total}\n",
                 )
                 roll_or_hold = input("Roll(r) or Hold(h) ? ").lower()
+
+                print("----------------------------------\n\n")
             else:
                 turn_total = 0
-                print("Scratched -- Switching Users")
+                print("----------------------------------")
+                print(f"{self.name} rolled a 1:                 ")
+                print(f"{self.name} Scratched -- Switching Users")
+                print("----------------------------------\n")
                 break
 
         if roll_or_hold == "h":
-            print("\nPlayer Held")
+            print("********************************")
+            print(f"{self.name} Held")
+            print("********************************\n")
 
             self.total += turn_total
-
-        self.show()
